@@ -1,0 +1,9 @@
+// API POST /api/v1/apps
+export const CREATE_APP = 'CREATE_APP';
+export const CREATE_APP_SUCCESS = 'CREATE_APP_SUCCESS';
+export const CREATE_APP_FAILURE = 'CREATE_APP_FAILURE';
+
+// API DELETE /api/v1/apps/:id
+export const DELETE_APP = 'DELETE_APP';
+export const DELETE_APP_SUCCESS = 'DELETE_APP_SUCCESS';
+export const DELETE_APP_FAILURE = 'DELETE_APP_FAILURE';
