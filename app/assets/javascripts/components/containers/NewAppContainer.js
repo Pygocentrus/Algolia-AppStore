@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 
-const NewAppContainer = ({ children }) =>
-  <div>
-    Let's add a new app
-  </div>;
+import { createApp } from '../actions/api';
+import NewApp from '../components/app/NewApp';
 
-NewAppContainer.propTypes = {};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  createApp: (data) => dispatch(createApp(data)),
+});
 
-export default NewAppContainer;
+export default connect(null, mapDispatchToProps)(NewApp);
