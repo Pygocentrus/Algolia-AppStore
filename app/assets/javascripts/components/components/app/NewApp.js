@@ -9,10 +9,11 @@ class NewApp extends Component {
     super(props);
 
     this.state = {
-      name_input: { value: null, isValid: false, type: "text", validation: titleR },
-      image_input: { value: null, isValid: false, type: "url", validation: urlR },
-      link_input: { value: null, isValid: false, type: "url", validation: urlR },
-      rank_input: { value: null, isValid: false, type: "number", validation: numberR },
+      name: { value: null, isValid: false, type: "text", validation: titleR },
+      image: { value: null, isValid: false, type: "url", validation: urlR },
+      link: { value: null, isValid: false, type: "url", validation: urlR },
+      category: { value: null, isValid: false, type: "text", validation: titleR },
+      rank: { value: null, isValid: false, type: "number", validation: numberR },
     };
   }
 
@@ -33,9 +34,12 @@ class NewApp extends Component {
   }
 
   onSubmitForm = () => {
-    const valid = keys(this.state).every(k => this.state[k].isValid)
+    const inputs = keys(this.state);
+    const valid = inputs.every(k => this.state[k].isValid)
+
     if (valid) {
-      this.props.createApp(this.state);
+      const app = inputs.map(k => ({ [`${k}`]: this.state[k].value }));
+      this.props.createApp(Object.assign({}, ...app));
     }
   }
 
