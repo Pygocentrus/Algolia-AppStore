@@ -34,6 +34,7 @@ gem 'react-rails'
 gem 'react-rails-hot-loader'
 gem 'browserify-rails'
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

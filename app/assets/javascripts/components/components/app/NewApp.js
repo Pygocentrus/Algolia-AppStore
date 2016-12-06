@@ -47,9 +47,7 @@ class NewApp extends Component {
     return keys(this.state).map(k =>
       <div className={`form-group ${!this.state[k].isValid ? 'has-error' : ''}`} key={k}>
         <label className="control-label" htmlFor={`${k}`}>{`${ucFirst(k)}:`}</label>
-        <div className="input-group">
-          <input type={`${this.state[k].type}`} className="form-control" onChange={(e) => this.handleChange(e, k)} />
-        </div>
+        <input type={`${this.state[k].type}`} className="form-control" onChange={(e) => this.handleChange(e, k)} />
       </div>
     );
   }

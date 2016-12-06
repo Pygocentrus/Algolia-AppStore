@@ -20,11 +20,16 @@ class DashboardContainer extends Component {
 
   handleChange = (e) => {
     const q = e.target.value;
-    this.index.search(q, (err, content) => {
-      if (!err) {
-        this.setState({ apps: content.hits });
-      }
-    });
+
+    if (q && q.length) {
+      this.index.search(q, (err, content) => {
+        if (!err) {
+          this.setState({ apps: content.hits });
+        }
+      });
+    } else {
+      this.setState({ apps: [] });
+    }
   }
 
   handleClick = (e, id) => {
