@@ -7,7 +7,7 @@ const emphasized = (item, name) => {
   return { __html: content };
 }
 
-const getApps = (apps, onClick) => {
+const getApps = (apps, handleClick) => {
   return apps.map(app =>
     <tr key={app.objectID}>
       <td>{app.id}</td>
@@ -15,7 +15,7 @@ const getApps = (apps, onClick) => {
       <td dangerouslySetInnerHTML={emphasized(app, 'category')} />
       <td><a href={app.link} target="_blank">link</a></td>
       <td>
-        <button className="btn btn-danger" onClick={(e) => onClick(e, app.id)}>
+        <button className="btn btn-danger" onClick={(e) => handleClick(e, app.id)}>
           <i className="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete
         </button>
       </td>
@@ -23,7 +23,7 @@ const getApps = (apps, onClick) => {
   );
 }
 
-const AppsList = ({ apps, onClick }) => {
+const AppsList = ({ apps, handleClick }) => {
   if (!apps.length) { return null }
   return (
     <table className="table table-hover table-stripped table-bordered">
@@ -37,14 +37,14 @@ const AppsList = ({ apps, onClick }) => {
         </tr>
       </thead>
       <tbody>
-        {getApps(apps, onClick)}
+        {getApps(apps, handleClick)}
       </tbody>
     </table>
   );
 };
 
 AppsList.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
   apps: PropTypes.array,
 };
 

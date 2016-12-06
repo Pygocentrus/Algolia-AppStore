@@ -11,7 +11,9 @@ class Api::V1::AppsController < Api::V1::BaseController
 
   # POST /api/1/apps
   def create
-    respond_with :api, :v1, App.create(app_params)
+    @app = App.create(app_params)
+    App.reindex
+    respond_with :api, :v1, @app
   end
 
   # DELETE /api/v1/apps/1

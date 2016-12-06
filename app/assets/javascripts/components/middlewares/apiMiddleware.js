@@ -4,10 +4,10 @@ import * as api from '../actions/api';
 import { postApiGenerator, deleteApiGenerator } from '../utils/apiWrapper';
 
 const apiMiddleware = store => next => action => {
+  next(action);
+
   const postApi = postApiGenerator(next);
   const deleteApi = deleteApiGenerator(next);
-
-  next(action);
 
   switch (action.type) {
     case types.CREATE_APP: {
@@ -16,14 +16,16 @@ const apiMiddleware = store => next => action => {
         name: types.CREATE_APP,
         params: { ...action.app },
       });
+      break;
     }
     case types.DELETE_APP: {
       const { id } = action;
       deleteApi({
         route: routes.DELETE_APP_R(id),
-        name: types.CREATE_APP,
+        name: types.DELETE_APP,
         params: { id },
       });
+      break;
     }
     default:
       break;

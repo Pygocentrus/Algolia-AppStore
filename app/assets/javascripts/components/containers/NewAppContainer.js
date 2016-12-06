@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 
-import { createApp } from '../actions/api';
+import * as apiActions from '../actions/api';
 import NewApp from '../components/app/NewApp';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  createApp: (data) => dispatch(createApp(data)),
+  createApp: (data) => dispatch(apiActions.createApp(data)),
 });
 
 export default connect(null, mapDispatchToProps)(NewApp);

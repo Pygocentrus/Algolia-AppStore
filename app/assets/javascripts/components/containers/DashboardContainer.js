@@ -45,7 +45,7 @@ class DashboardContainer extends Component {
           <p>Use the search bellow to discover the best apps in town</p>
           <SearchBox onChange={this.handleChange} />
         </div>
-        <AppsList apps={this.state.apps} onClick={this.handleClick}/>
+        <AppsList apps={this.state.apps} handleClick={this.handleClick}/>
       </div>
     );
   }
@@ -54,7 +54,6 @@ class DashboardContainer extends Component {
 DashboardContainer.propTypes = {};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  createApp: (data) => dispatch(createApp(data)),
   deleteApp: (id) => dispatch(deleteApp(id)),
 });
 
