@@ -7,9 +7,9 @@ export function createApp(app) {
   };
 }
 
-export function deleteApp(app) {
+export function deleteApp(id) {
   return {
     type: actions.DELETE_APP,
-    app
+    id
   };
 }

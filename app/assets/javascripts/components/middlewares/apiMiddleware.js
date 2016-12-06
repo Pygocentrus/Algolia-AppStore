@@ -17,6 +17,14 @@ const apiMiddleware = store => next => action => {
         params: { ...action.app },
       });
     }
+    case types.DELETE_APP: {
+      const { id } = action;
+      deleteApi({
+        route: routes.DELETE_APP_R(id),
+        name: types.CREATE_APP,
+        params: { id },
+      });
+    }
     default:
       break;
   }
