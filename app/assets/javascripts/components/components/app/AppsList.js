@@ -23,29 +23,36 @@ const getApps = (apps, handleClick) => {
   );
 }
 
-const AppsList = ({ apps, handleClick }) => {
+const AppsList = ({ apps, data, handleClick }) => {
   if (!apps.length) { return null }
   return (
-    <table className="table table-hover table-stripped table-bordered">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Link</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {getApps(apps, handleClick)}
-      </tbody>
-    </table>
+    <div>
+      <div>
+        {`${data.nbHits} result${data.nbHits > 1 ? 's' : ''} found in ${data.ms}ms`}
+      </div>
+      <br />
+      <table className="table table-hover table-stripped table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Link</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {getApps(apps, handleClick)}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
 AppsList.propTypes = {
   handleClick: PropTypes.func.isRequired,
   apps: PropTypes.array,
+  data: PropTypes.object,
 };
 
 export default AppsList;

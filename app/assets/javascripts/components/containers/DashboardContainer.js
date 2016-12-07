@@ -10,7 +10,7 @@ import { config } from '../utils/algoliaConfig';
 class DashboardContainer extends Component {
   constructor() {
     super();
-    this.state = { apps: [] };
+    this.state = { apps: [], data: {} };
   }
 
   componentDidMount() {
@@ -24,11 +24,17 @@ class DashboardContainer extends Component {
     if (q && q.length) {
       this.index.search(q, (err, content) => {
         if (!err) {
-          this.setState({ apps: content.hits });
+          this.setState({
+            apps: content.hits,
+            data: {
+              nbHits: content.nbHits,
+              ms: content.processingTimeMS,
+            },
+          });
         }
       });
     } else {
-      this.setState({ apps: [] });
+      this.setState({ apps: [], data: {} });
     }
   }
 
@@ -45,7 +51,7 @@ class DashboardContainer extends Component {
           <p>Use the search bellow to discover the best apps in town</p>
           <SearchBox onChange={this.handleChange} />
         </div>
-        <AppsList apps={this.state.apps} handleClick={this.handleClick}/>
+        <AppsList apps={this.state.apps} data={this.state.data} handleClick={this.handleClick}/>
       </div>
     );
   }
