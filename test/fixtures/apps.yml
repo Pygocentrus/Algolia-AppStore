@@ -1,15 +1,27 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+spotify:
+  name: Spotify
+  image: http://spotify.com/logo.png
+  link: http://spotify.com
+  category: Entertainment
+  rank: 55
 
-one:
-  name: MyString
-  image: MyString
-  link: MyString
-  category: MyString
-  rank: 1
+evernote:
+  name: Evernote
+  image: http://evernote.com/logo.png
+  link: http://evernote.com
+  category: Productivity
+  rank: 40
 
-two:
-  name: MyString
-  image: MyString
-  link: MyString
-  category: MyString
-  rank: 1
+atom:
+  name: Atom
+  image: http://atom.com/logo.png
+  link: http://atom.com
+  category: Developers
+  rank: 42
+
+sketch:
+  name: Sketch
+  image: http://sketch.com/logo.png
+  link: http://sketch.com
+  category: Design
+  rank: 30
