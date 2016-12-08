@@ -40,7 +40,16 @@ class DashboardContainer extends Component {
 
   handleClick = (e, id) => {
     e.preventDefault();
+    const s = this.state;
+
     this.props.deleteApp(id);
+    this.setState({
+      apps: s.apps.filter(h => h.id !== id),
+      data: {
+        nbHits: s.data.nbHits - 1,
+        ms: s.data.ms,
+      },
+    });
   }
 
   render() {
