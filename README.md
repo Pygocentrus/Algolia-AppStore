@@ -16,8 +16,24 @@ Before starting, the following dependencies are needed:
 - NodeJS 6.0.x, NPM 3.10.x
 - PostgreSQL 9.6.x
 
-First of all, create a database `Algolia-AppStore_development`.
-To start the project, simply clone the project and run the following commands:
+First of all, create a `config/local_env.yml` that contains your backend Algolia credentials, as follow:
+```yml
+ALGOLIA_APP_ID: 'xxxx'
+ALGOLIA_API_KEY: 'xxxx'
+```
+Next, edit the `algoliaConfig.js` file to provide your own search-only client's credentials:
+```javascript
+// assets/javascripts/components/utils/algoliaConfig.js
+export const config = {
+  appId: 'xxxx',
+  searchOnlyApiKey: 'xxxx',
+  index: 'App',
+};
+```
+
+Then, create a database `Algolia-AppStore_development` and give your user access to the DB.
+
+After doing that, simply clone the project and run the following commands:
 ```bash
 $ bundle install
 $ npm install
@@ -25,13 +41,7 @@ $ rake db:migrate
 $ rake db:seed
 ```
 
-Now that everything is ready, create a `config/local_env.yml` that contains your backend Algolia credentials, as follow:
-```yml
-ALGOLIA_APP_ID: 'xxxx'
-ALGOLIA_API_KEY: 'xxxx'
-```
-
-And to start the local server, run:
+Finally, to start the local server, run:
 ```bash
 $ rails s
 ```
